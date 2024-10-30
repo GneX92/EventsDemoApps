@@ -1,13 +1,10 @@
-﻿namespace Counter;
+namespace Counter;
 
-public delegate bool Milestone( int x );
-public delegate void Aktion();
-
-internal class Counter(Milestone milestone = null)
+internal class AlternativeCounter(Predicate<int> milestone = null)
 {
-    public event Aktion OnMilestoneReached;
+    public event Action OnMilestoneReached;
 
-    private Milestone _milestone = milestone;
+    private Predicate<int> _milestone = milestone;
 
     public int Count { get; private set; } = 0;
     
